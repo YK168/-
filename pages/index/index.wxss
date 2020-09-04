@@ -1,0 +1,186 @@
+.header{
+  background-color: white;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+.userArear{
+  width: 100%;
+  height: 100%;
+  padding-bottom: 10px;
+  /* background-color: slateblue; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.userImage{
+  width: 9vw;
+  height: 9vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 30rpx;
+  border-radius: 50%;
+}
+.main{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+#map{
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+.movableArea{
+  background-color: rgba(255, 255, 255, 0);
+  width: 100vw;
+  height: 25vh;
+  position: fixed;
+}
+.movableView{
+  background-color: rgba(255, 255, 255, 0);
+  width: 100vw;
+  height: 108vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 25px 25px 0 0;
+}
+.mylLocation{
+  position: absolute;
+  top: -6vh;
+  right: 3vw;
+  width: 9vw;
+  height: 9vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+.userLocation{
+  position: absolute;
+  top: -12vh;
+  right: 3vw;
+  width: 9vw;
+  height: 9vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+.functionalAreas{
+  width: 95%;
+  height: 20%;
+  border-radius: 15px;
+  background-color: white;
+  -moz-box-shadow:3px 5px 10px #333333; 
+  -webkit-box-shadow:3px 5px 10px #333333; 
+  box-shadow:3px 5px 10px #333333;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+  .title{
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+    height: 25%;
+    background: -webkit-gradient(linear,18% 0%, 20% 80%, from(rgb(157, 166, 216)), to(#F7F3F7));
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .fontColorGradient{
+    background: -webkit-gradient(linear,100% 100%, 41% 0%, from(#C0CDD1), to(#CC43C7));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .titleIcon{
+    margin: 0 2%;
+    font-size: 30px;
+    background: -webkit-gradient(linear,100% 100%, 41% 0%, from(#CC43C7), to(#F7F3F7));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+.majorFunction{
+  width: 100%;
+  height: 75%;
+  border-radius: 0 0 15px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+  .addressBox{
+    width: 90%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+    .addressBox>view:nth-child(1){
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      width: 95%;
+      height: 30%;
+      font-size: 7pt;
+      font-weight: bold;
+      color: green;
+    }
+    .addressBox>view:nth-child(2){
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      width: 85%;
+      height: 70%;
+      font-size: 10pt;
+      font-weight: bold;
+      color: black;
+      background-color: gainsboro;
+      border-radius: 5px;
+      padding: 0 5%;
+    }
+  .placeTheOrder{
+    width: 85%;
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .i-button-class{
+    background: -webkit-gradient(linear,80% 0%, 18% 20%, from(rgb(157, 166, 216)), to(#ddd4dd));
+    /* -webkit-background-clip: text;*/
+    /* color: transparent;  */
+  }
+
+.recommendedAreas{
+  width: 98%;
+  height: 78%;
+  background-color: green;
+}
+.scrollView{
+  width: 100%;
+  height: 98%;
+}

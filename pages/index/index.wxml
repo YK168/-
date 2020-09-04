@@ -1,0 +1,61 @@
+<view class="header">
+  <view class="userArear">
+    <view class="">
+      <open-data type="userAvatarUrl" class="userImage"></open-data>
+    </view>
+    <view>{{city}}</view>
+  </view>
+</view>
+<view class="main">
+  <map id="map" latitude="{{latitude}}" longitude="{{longitude}}" scale="{{mapScale}}" markers="{{markers}}" setting="{{mapSetting}}"
+  bindtap="setInitialPoint"
+  ></map>
+  <movable-area class="movableArea">
+    <movable-view class="movableView" y="{{Y}}" direction="vertical" inertia out-of-bounds
+    bindchange="movableViewBindchange"
+    bindtouchend="bindtouchend"
+    >
+      <view class="mylLocation" bindtap="location">
+        <text class="iconfont icondingwei"></text>
+      </view>
+      <view class="userLocation" bindtap="userLocation">
+        <text class="iconfont icontingzijiluyin"></text>
+      </view>
+      <view class="functionalAreas">
+        <view class="title">
+          <text class="iconfont iconshangjiabantelangxichetubiao titleIcon "></text>
+          <text class="fontColorGradient">测试版本不代表最终品质</text>
+        </view>
+        <view class="majorFunction">
+          <view class="addressBox">
+            <view>
+              <i-icon type="emoji_fill" />
+              {{positionState}}
+            </view>
+            <view>
+              <text>{{addressName}}</text>
+            </view>
+          </view>
+          <view class="placeTheOrder">
+            <button style="width:100%" class="i-button-class" size="default">我要下单</button>
+          </view>
+        </view>
+      </view>
+      <view class="recommendedAreas">
+        <scroll-view class="scrollView" scroll-y>
+          <block wx:for="{{50}}" wx:key="index">
+            <view>这里是广告区域</view>
+          </block>
+        </scroll-view>
+      </view>
+    </movable-view>
+  </movable-area>
+</view>
+
+<!--手动搜索地址-->
+<i-action-sheet visible="{{ visible2 }}">
+    <view slot="header" style="padding: 16px">
+        <view style="color: #444;font-size: 16px">确定吗？</view>
+        <text>删除后无法恢复哦</text>
+    </view>
+</i-action-sheet>
