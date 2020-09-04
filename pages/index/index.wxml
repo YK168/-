@@ -32,7 +32,7 @@
               <i-icon type="emoji_fill" />
               {{positionState}}
             </view>
-            <view>
+            <view bindtap="accordingToSearchBox">
               <text>{{addressName}}</text>
             </view>
           </view>
@@ -53,9 +53,27 @@
 </view>
 
 <!--手动搜索地址-->
-<i-action-sheet visible="{{ visible2 }}">
-    <view slot="header" style="padding: 16px">
-        <view style="color: #444;font-size: 16px">确定吗？</view>
-        <text>删除后无法恢复哦</text>
+<i-action-sheet visible="{{ isSearchBox }}" bind:cancel="accordingToSearchBox">
+    <view slot="header" style="padding: 16px 0">
+        <view class="seachBox">
+          <view class="seachInput">
+            <view class="goldenrodText">{{city}}</view>
+            <input class="i-inputStyle" value="{{ parkingLot }}" placeholder="请输入车辆停放点" bindinput="inputPLarkingLot" />
+            <view class="goldenrodText" bindtap="accordingToSearchBox">取消</view>
+          </view>
+          <view class="relevant">
+            <scroll-view class="relevantScroll" scroll-y="true">
+              <block wx:for="{{promptData}}" wx:key="index">
+                <view class="tipsForDetails" data-tipsForDetailsTitle="{{item}}" bindtap="manuallyChoose">
+                  <i-icon type="coordinates_fill" size="24" />
+                  <view class="tipsForDetailsTitle">
+                    <view>{{item.title}}</view>
+                    <view class="tipsForDetailsAddress">{{item.address}}</view>
+                  </view>
+                </view>
+              </block>
+            </scroll-view>
+          </view>
+        </view>
     </view>
 </i-action-sheet>

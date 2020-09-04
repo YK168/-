@@ -2,6 +2,7 @@
   "usingComponents": {
     "i-icon": "../../dist/icon/index",
     "i-button": "../../dist/button/index",
-    "i-action-sheet": "../../dist/action-sheet/index"
+    "i-action-sheet": "../../dist/action-sheet/index",
+    "i-input": "../../dist/input/index"
   }
 }

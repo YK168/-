@@ -46,6 +46,9 @@ Page({
     userSetLocation:null,//用户选择的点的位置经纬度
     positionState:"定位中...",//用户的定位情况
     isManual:false,//用户是否手动选择了定位
+    isSearchBox:false,//是否弹出手动搜索框
+    parkingLot:"",//手动搜索地址输入框数据
+    promptData:[],//关键词提示数据
   },
 
   movableViewBindchange(e){
@@ -257,27 +260,81 @@ Page({
   },
   //逆地址解析（坐标位置描述）
   getAddressName(location,iscity){
-    let vm = this;
-    qqmapsdk.reverseGeocoder({
-      location:location,
-      success:function(res){
-        if(iscity){
-          vm.setData({
-            addressName:res.result.formatted_addresses.rough,
-            city:res.result.address_component.city
-          })
-        }else{
-          vm.setData({
-            addressName:res.result.formatted_addresses.rough,
-          })
+    return new Promise((resolve,reject)=>{
+      let vm = this;
+      qqmapsdk.reverseGeocoder({
+        location:location,
+        success:function(res){
+          if(iscity){
+            vm.setData({
+              addressName:res.result.formatted_addresses.rough,
+              city:res.result.address_component.city
+            })
+          }else{
+            vm.setData({
+              addressName:res.result.formatted_addresses.rough,
+            })
+          }
+          resolve();
         }
-      }
+      })
+      
     })
+    
   },
   //下单按钮方法
   handleClick(){
     console.log("点了下单")
   },
+  
+  //手动选择地址弹框
+  accordingToSearchBox(){
+    let vm = this;
+    vm.setData({
+      isSearchBox:!vm.data.isSearchBox,
+      parkingLot:vm.data.addressName
+    })
+    vm.keywordInputPrompt(vm.data.parkingLot,vm.data.city);
+  },
+  //手动选择地址输入时
+  inputPLarkingLot(e){
+    const vm = this;
+    vm.data.parkingLot = e.detail.value;
+    vm.keywordInputPrompt(vm.data.parkingLot,vm.data.city);
+  },
+  //关键词输入提示
+  keywordInputPrompt(keyword,region){
+    let vm = this;
+    qqmapsdk.getSuggestion({
+      keyword:keyword,
+      region:region,
+      success:function(res){
+        vm.setData({
+          promptData:res.data
+        })
+      }
+    })
+  },
+  //手动选择地址
+  manuallyChoose(e){
+    const vm = this;
+    let data = e.currentTarget.dataset.tipsfordetailstitle
+    let uplatitude = "markers[0].latitude";
+    let uplongitude = "markers[0].longitude";
+    let location = {
+      latitude:data.location.lat,
+      longitude:data.location.lng,
+    };
+    vm.setData({
+      [uplatitude]:location.latitude,
+      [uplongitude]:location.longitude,
+      latitude:location.latitude,
+      longitude:location.longitude,
+      addressName:data.title,
+      isSearchBox:false
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
