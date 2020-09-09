@@ -11,7 +11,7 @@
             catchtouchend="handlerTouchEnd">
             <view class="i-index-fixed-item" 
                 wx:for="{{fixedData}}" 
-                wx:key="{{index}}" 
+                wx:key="index" 
                 data-index="{{index}}" 
                 catchtap="handlerFixedTap">
                 {{item}}

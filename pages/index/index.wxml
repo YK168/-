@@ -57,12 +57,12 @@
     <view slot="header" style="padding: 16px 0">
         <view class="seachBox">
           <view class="seachInput">
-            <view class="goldenrodText">{{city}}</view>
+            <view class="goldenrodText" bindtap="toggleRight">{{chooseCity}}</view>
             <input class="i-inputStyle" value="{{ parkingLot }}" placeholder="请输入车辆停放点" bindinput="inputPLarkingLot" />
             <view class="goldenrodText" bindtap="accordingToSearchBox">取消</view>
           </view>
           <view class="relevant">
-            <scroll-view class="relevantScroll" scroll-y="true">
+            <scroll-view class="relevantScroll" enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="true">
               <block wx:for="{{promptData}}" wx:key="index">
                 <view class="tipsForDetails" data-tipsForDetailsTitle="{{item}}" bindtap="manuallyChoose">
                   <i-icon type="coordinates_fill" size="24" />
@@ -77,3 +77,32 @@
         </view>
     </view>
 </i-action-sheet>
+<i-drawer mode="right" visible="{{showRight}}" bind:close="toggleRight">
+    <view class="chooseCityContainer">
+        <view class="chooseCity-heard"></view>
+        <view class="chooseCity-main">
+          <view class="chooseCity-main-search">
+            <input class="searchChooseCity" value="{{searchChooseCity}}" placeholder="请输入城市名称"></input>
+          </view>
+          <view class="chooseCity-main-city">
+            <i-spin fix wx:if="{{isSpin}}"></i-spin>
+            <i-index height="100%" bind:change="onChange">
+                <i-index-item 
+                    wx:for="{{ cities }}" 
+                    wx:for-index="index" 
+                    wx:key="index" 
+                    wx:for-item="item" name="{{item.key}}">
+                    <view 
+                        class="i-index-demo-item" 
+                        wx:for="{{item.list}}" 
+                        wx:for-index="in" 
+                        wx:key="in" 
+                        wx:for-item="it">
+                        {{it.name}}
+                    </view>
+                </i-index-item>
+            </i-index>
+          </view>
+        </view>
+    </view>
+</i-drawer>

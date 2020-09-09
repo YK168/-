@@ -3,6 +3,10 @@
     "i-icon": "../../dist/icon/index",
     "i-button": "../../dist/button/index",
     "i-action-sheet": "../../dist/action-sheet/index",
-    "i-input": "../../dist/input/index"
+    "i-input": "../../dist/input/index",
+    "i-drawer": "../../dist/drawer/index",
+    "i-spin": "../../dist/spin/index",
+    "i-index": "../../dist/index/index",
+    "i-index-item": "../../dist/index-item/index"
   }
 }
